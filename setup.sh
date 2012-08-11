@@ -4,6 +4,4 @@
 #cdr is a command line tool that is a logical extension of cd. It adds
 #a way of easily bookmarking file locations and moving between them with ease.
 
-#see Man.txt for details
-
-
+echo "alias cdr='. `pwd`/cdr.sh'" >> ~/.bashrc
