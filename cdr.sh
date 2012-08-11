@@ -6,6 +6,7 @@ txtund=$(tput sgr 0 1)          # Underline
 txtbld=$(tput bold)             # Bold
 bldred=${txtbld}$(tput setaf 1) #  red
 bldgrn=${txtbld}$(tput setaf 2) #  green
+bldylw=${txtbld}$(tput setaf 3) #  yellow
 bldblu=${txtbld}$(tput setaf 4) #  blue
 bldwht=${txtbld}$(tput setaf 7) #  white
 txtrst=$(tput sgr0)             # Reset
@@ -45,7 +46,7 @@ else
                 echo -n "$i: "
                 flag=1
             else
-                echo -n "${bldgrn}"
+                echo -n "${bldylw}"
                 echo $i
                 flag=0
             fi
@@ -55,6 +56,8 @@ else
         if [ $1 == \+ ] 
         then
             #The user wants this directory added to their .cdrrc
+            cdr - $2 >> /dev/null
+            
             echo
             echo -n "${bldgrn}"
             echo -n "Adding " 
@@ -120,7 +123,7 @@ else
                 if [ $next -eq 1 ]
                 then
                     echo -n "Moving to " 
-                    echo -n "${bldgrn}"
+                    echo -n "${bldylw}"
                     echo $i
 
                     cd $i
