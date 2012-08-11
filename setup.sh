@@ -5,3 +5,4 @@
 #a way of easily bookmarking file locations and moving between them with ease.
 
 echo "alias cdr='. `pwd`/cdr.sh'" >> ~/.bashrc
+echo "PS1='`cat prompt.config`'" >> ~/.bashrc
