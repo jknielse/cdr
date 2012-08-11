@@ -15,6 +15,10 @@ pass=${bldblu}*${txtrst}
 warn=${bldred}*${txtrst}
 ques=${bldblu}?${txtrst}
 
+
+IFS='\
+'
+
 #Check to make sure that the config file exists
 if [ ! -e ~/.cdrrc ]
 then
@@ -66,7 +70,8 @@ else
             echo -n $txtrst
             echo
 
-            echo "$2 $(pwd)" >> ~/.cdrrc
+            echo $2 >> ~/.cdrrc
+            echo `pwd` >> ~/.cdrrc
 
         elif [ $1 == "-" ]
         then
@@ -75,7 +80,6 @@ else
             mod=0
 
             touch /tmp/cdrrcnew
-
             for i in `cat ~/.cdrrc`
             do
                 if [ $next -eq 1 ]
@@ -144,4 +148,5 @@ else
     fi
 fi
 
+IFS=' '
 echo -n $txtrst
