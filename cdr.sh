@@ -1,19 +1,7 @@
 #!/bin/bash
 # cdr.sh - Extension to cd that allows for bookmarking locations
 
-# Text color variables
-txtund=$(tput sgr 0 1)          # Underline
-txtbld=$(tput bold)             # Bold
-bldred=${txtbld}$(tput setaf 1) #  red
-bldgrn=${txtbld}$(tput setaf 2) #  green
-bldylw=${txtbld}$(tput setaf 3) #  yellow
-bldblu=${txtbld}$(tput setaf 4) #  blue
-bldwht=${txtbld}$(tput setaf 7) #  white
-txtrst=$(tput sgr0)             # Reset
-info=${bldwht}*${txtrst}        # Feedback
-pass=${bldblu}*${txtrst}
-warn=${bldred}*${txtrst}
-ques=${bldblu}?${txtrst}
+. ~/.libs/colours
 
 
 IFS='\
@@ -24,17 +12,17 @@ if [ ! -e ~/.cdrrc ]
 then
     #Create it if it doesn't
     echo
-    echo -n "${bldred}"
+    bldred
     echo -n "No " 
-    echo -n "${bldblu}"
+    bldblu
     echo -n ~/.cdrrc 
-    echo -n "${bldred}"
+    bldred
     echo " file detected" 
-    echo -n "${bldgrn}"
+    bldgrn
     echo -n "Creating " 
-    echo -n "${bldblu}"
+    bldblu
     echo ~/.cdrrc
-    echo -n $txtrst
+    txtrst
     touch ~/.cdrrc
 else
     if [ $# -eq 0 ]
@@ -46,11 +34,11 @@ else
         do
             if [ $flag -eq 0 ]
             then
-                echo -n "${bldblu}"
+                bldblu
                 echo -n "$i: "
                 flag=1
             else
-                echo -n "${bldylw}"
+                bldylw
                 echo $i
                 flag=0
             fi
@@ -63,11 +51,11 @@ else
             cdr - $2 >> /dev/null
             
             echo
-            echo -n "${bldgrn}"
+            bldgrn
             echo -n "Adding " 
-            echo -n "${bldblu}"
+            bldblu
             echo $2
-            echo -n $txtrst
+            txtrst
             echo
 
             echo $2 >> ~/.cdrrc
@@ -90,9 +78,9 @@ else
                 if [ $i == $2 ]
                 then
                     echo
-                    echo -n $bldred
+                    bldred
                     echo -n "Removing " 
-                    echo -n "${bldblu}"
+                    bldblu
                     echo $i
                     echo
                     found=1
@@ -110,7 +98,7 @@ else
             done
             if [ $found -eq 0 ]
             then
-                echo -n "${bldred}"
+                bldred
                 echo Location $2 not found.
                 rm /tmp/cdrrcnew
             else
@@ -127,7 +115,7 @@ else
                 if [ $next -eq 1 ]
                 then
                     echo -n "Moving to " 
-                    echo -n "${bldylw}"
+                    bldylw
                     echo $i
 
                     cd $i
@@ -141,7 +129,7 @@ else
             done
             if [ $found -eq 0 ]
             then
-                echo -n "${bldred}"
+                bldred
                 echo Location $1 not found.
             fi
         fi
@@ -149,4 +137,4 @@ else
 fi
 
 IFS=' '
-echo -n $txtrst
+txtrst
