@@ -22,6 +22,7 @@ then
     echo -n "Creating " 
     bldblu
     echo ~/.cdrrc
+    echo
     txtrst
     touch ~/.cdrrc
 else
