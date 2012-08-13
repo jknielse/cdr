@@ -6,5 +6,47 @@
 
 . ~/.libs/colours
 
-echo "alias cdr='. `pwd`/cdr.sh'" >> ~/.bashrc
-echo "PS1='`cat prompt.config`'" >> ~/.bashrc
+function setup {
+   
+    bldylw
+    echo "    Inserting alias into bashrc"
+    echo "alias cdr='. `pwd`/cdr.sh'" >> ~/.bashrc
+    bldgrn
+    echo "    Done"
+    bldylw
+    echo "    Inserting adaptation to shell prompt into bashrc"
+    echo "PS1='`cat prompt.config`'" >> ~/.bashrc
+    bldgrn
+    echo "    Done"
+
+    #after everything else, this is probably the last step.
+    bldylw
+    echo "    Updating installation status"
+    echo 0 > ./installation_status
+    bldgrn
+    echo "    Done"
+    bldgrn
+    echo "Installation Successful"
+}
+
+
+bldylw
+echo -n "Installing "
+bldblu
+cat ./program_name
+if [[ -e ./installation_status ]]
+then
+    if [[ `cat ./installation_status` == "0" ]]
+    then
+        bldylw
+        echo "    Program aready installed"
+        bldgrn
+        echo "Installation Successful"
+    else
+        setup
+    fi
+else
+    setup
+fi
+txtrst
+
