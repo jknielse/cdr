@@ -87,14 +87,7 @@ else
                     found=1
                     next=1
                 else
-                    if [ $mod -eq 0 ]
-                    then
-                        mod=1
-                        echo -n "$i " >> /tmp/cdrrcnew
-                    else
-                        mod=0
-                        echo $i >> /tmp/cdrrcnew
-                    fi
+                    echo $i >> /tmp/cdrrcnew
                 fi
             done
             if [ $found -eq 0 ]
