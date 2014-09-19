@@ -57,7 +57,6 @@ else
             bldblu
             echo $2
             txtrst
-            echo
 
             echo $2 >> ~/.cdrrc
             echo `pwd` >> ~/.cdrrc
@@ -83,7 +82,6 @@ else
                     echo -n "Removing " 
                     bldblu
                     echo $i
-                    echo
                     found=1
                     next=1
                 else
