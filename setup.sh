@@ -11,6 +11,8 @@ function setup {
     bldylw
     echo "    Inserting alias into bashrc"
     echo "alias cdr='. `pwd`/cdr.sh'" >> ~/.bashrc
+    echo "    Installing tab completion into bashrc"
+    echo ". `pwd`/cdr_completion.sh" >> ~/.bashrc
     bldgrn
     echo "    Done"
     bldylw
