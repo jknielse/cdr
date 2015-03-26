@@ -128,5 +128,5 @@ else
     fi
 fi
 
-IFS=' '
+unset IFS
 txtrst
